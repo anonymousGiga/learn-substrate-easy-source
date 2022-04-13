@@ -51,6 +51,8 @@ hex-literal = { version = "0.3.4", optional = true }
 # Local Dependencies
 pallet-template = { version = "4.0.0-dev", default-features = false, path = "../pallets/template" }
 pallet-simple-pallet = { version = "4.0.0-dev", default-features = false, path = "../pallets/simple-pallet" }
+pallet-use-storage = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-storage" }
+
 
 [build-dependencies]
 substrate-wasm-builder = { version = "5.0.0-dev", git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.18" }
@@ -71,6 +73,7 @@ std = [
 	"pallet-sudo/std",
 	"pallet-template/std",
 	"pallet-simple-pallet/std",
+	"pallet-use-storage/std",
 	"pallet-timestamp/std",
 	"pallet-transaction-payment-rpc-runtime-api/std",
 	"pallet-transaction-payment/std",
