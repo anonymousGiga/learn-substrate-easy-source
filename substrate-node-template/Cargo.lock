@@ -3648,6 +3648,7 @@ dependencies = [
  "pallet-timestamp",
  "pallet-transaction-payment",
  "pallet-transaction-payment-rpc-runtime-api",
+ "pallet-use-errors",
  "pallet-use-storage",
  "parity-scale-codec",
  "scale-info",
@@ -4061,6 +4062,20 @@ dependencies = [
  "pallet-transaction-payment",
  "parity-scale-codec",
  "sp-api",
+ "sp-runtime",
+]
+
+[[package]]
+name = "pallet-use-errors"
+version = "4.0.0-dev"
+dependencies = [
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
+ "parity-scale-codec",
+ "scale-info",
+ "sp-core",
+ "sp-io",
  "sp-runtime",
 ]
 
