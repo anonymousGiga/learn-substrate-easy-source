@@ -53,6 +53,7 @@ pallet-template = { version = "4.0.0-dev", default-features = false, path = "../
 pallet-simple-pallet = { version = "4.0.0-dev", default-features = false, path = "../pallets/simple-pallet" }
 pallet-use-storage = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-storage" }
 pallet-use-errors = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-errors" }
+pallet-ext-example= { version = "4.0.0-dev", default-features = false, path = "../pallets/ext-example" }
 
 
 [build-dependencies]
@@ -76,6 +77,7 @@ std = [
 	"pallet-simple-pallet/std",
 	"pallet-use-storage/std",
 	"pallet-use-errors/std",
+	"pallet-ext-example/std",
 	"pallet-timestamp/std",
 	"pallet-transaction-payment-rpc-runtime-api/std",
 	"pallet-transaction-payment/std",
