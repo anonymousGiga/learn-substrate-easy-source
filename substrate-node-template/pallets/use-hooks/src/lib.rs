@@ -38,6 +38,20 @@ pub mod pallet {
 		SetParam(u32),
 	}
 
+	// 6. Hooks
+	// 添加hooks函数
+	#[pallet::hooks]
+	impl<T: Config> Hooks<BlockNumberFor<T>> for Pallet<T> {
+		fn on_initialize(n: BlockNumberFor<T>) -> Weight {
+			log::info!(target: "use-hooks", "++++++++++++ on_initialize, block number is {:?}", n);
+			0
+		}
+
+		fn on_finalize(n: BlockNumberFor<T>) {
+			log::info!(target: "use-hooks", "------------ on_finalize, block number is {:?}", n);
+		}
+	}
+
 	// 8. Runtime Errors
 	#[pallet::error]
 	pub enum Error<T> {
@@ -67,6 +81,7 @@ pub mod pallet {
 
 			//3、发出事件
 			Self::deposit_event(Event::SetParam(param));
+			log::info!(target: "use-hooks", "set param bigger then 100");
 
 			Ok(().into())
 		}

@@ -287,6 +287,10 @@ impl pallet_ext_example::Config for Runtime {
 	type Event = Event;
 }
 
+impl pallet_use_hooks::Config for Runtime {
+	type Event = Event;
+}
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub enum Runtime where
@@ -308,6 +312,7 @@ construct_runtime!(
 		UseStorage: pallet_use_storage,
 		UseErrors: pallet_use_errors,
 		ExtExample: pallet_ext_example,
+		UseHooks: pallet_use_hooks,
 	}
 );
 

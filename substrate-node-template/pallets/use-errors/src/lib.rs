@@ -56,15 +56,15 @@ pub mod pallet {
 	}
 
 	// 8. Runtime Errors
-	#[pallet::error] 
+	#[pallet::error]
 	pub enum Error<T> {
 		// Class 只允许设置一次
-        SetClassDuplicate,
+		SetClassDuplicate,
 		// 相同学号的只允许设置一次名字
-        SetStudentsInfoDuplicate,
+		SetStudentsInfoDuplicate,
 		// 相同床位只允许设置一次
-        SetDormInfoDuplicate,
-    }
+		SetDormInfoDuplicate,
+	}
 
 	// 7. Extrinsics
 	// Functions that are callable from outside the runtime.
