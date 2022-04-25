@@ -56,6 +56,8 @@ pallet-use-errors = { version = "4.0.0-dev", default-features = false, path = ".
 pallet-ext-example = { version = "4.0.0-dev", default-features = false, path = "../pallets/ext-example" }
 pallet-use-hooks = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-hooks" }
 pallet-use-rpc = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-rpc" }
+pallet-use-config1 = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-config1" }
+pallet-use-config2 = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-config2" }
 
 
 [build-dependencies]
@@ -82,6 +84,8 @@ std = [
 	"pallet-ext-example/std",
 	"pallet-use-hooks/std",
 	"pallet-use-rpc/std",
+	"pallet-use-config1/std",
+	"pallet-use-config2/std",
 	"pallet-timestamp/std",
 	"pallet-transaction-payment-rpc-runtime-api/std",
 	"pallet-transaction-payment/std",

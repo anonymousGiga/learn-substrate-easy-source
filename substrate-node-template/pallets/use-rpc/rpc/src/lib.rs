@@ -27,10 +27,7 @@ impl<C, B> UseRpc<C, B> {
 #[rpc]
 pub trait MyRpcApi<BlockHash> {
 	#[rpc(name = "my_rpc_method")]
-	fn rpc_method(
-		&self,
-        v: u32
-	) -> Result<bool>;
+	fn rpc_method(&self, v: u32) -> Result<bool>;
 }
 
 impl<C, Block> MyRpcApi<<Block as BlockT>::Hash> for UseRpc<C, Block>
@@ -38,10 +35,7 @@ where
 	Block: BlockT,
 	C: Send + Sync + 'static + ProvideRuntimeApi<Block> + HeaderBackend<Block>,
 {
-	fn rpc_method(
-		&self,
-        _v: u32
-	) -> Result<bool> {
-        Ok(true)
-    }
+	fn rpc_method(&self, _v: u32) -> Result<bool> {
+		Ok(true)
+	}
 }
