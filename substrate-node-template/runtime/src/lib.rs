@@ -305,6 +305,17 @@ impl pallet_use_config2::Config for Runtime {
 	type StudentNameType = u128;
 }
 
+impl pallet_storage_provider::Config for Runtime {
+	type Event = Event;
+	type Value = u32;
+}
+
+impl pallet_use_other_pallet1::Config for Runtime {
+	type Event = Event;
+	type Value = u32;
+	type MyStorage = StorageProvider; 
+}
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub enum Runtime where
@@ -330,6 +341,8 @@ construct_runtime!(
 		UseRpc: pallet_use_rpc,
 		UseConfig1: pallet_use_config1,
 		UseConfig2: pallet_use_config2,
+		StorageProvider: pallet_storage_provider, 
+		UseOtherPallet1: pallet_use_other_pallet1,
 	}
 );
 

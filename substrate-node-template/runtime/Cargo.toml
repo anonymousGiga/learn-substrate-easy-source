@@ -59,6 +59,9 @@ pallet-use-rpc = { version = "4.0.0-dev", default-features = false, path = "../p
 pallet-use-config1 = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-config1" }
 pallet-use-config2 = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-config2" }
 
+pallet-storage-provider = { version = "4.0.0-dev", default-features = false, path = "../pallets/storage-provider" }
+pallet-use-other-pallet1 = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-other-pallet1" }
+
 
 [build-dependencies]
 substrate-wasm-builder = { version = "5.0.0-dev", git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.18" }
@@ -86,6 +89,8 @@ std = [
 	"pallet-use-rpc/std",
 	"pallet-use-config1/std",
 	"pallet-use-config2/std",
+	"pallet-storage-provider/std",
+	"pallet-use-other-pallet1/std",
 	"pallet-timestamp/std",
 	"pallet-transaction-payment-rpc-runtime-api/std",
 	"pallet-transaction-payment/std",
