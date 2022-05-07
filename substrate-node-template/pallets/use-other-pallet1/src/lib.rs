@@ -30,7 +30,7 @@ pub mod pallet {
 			+ Default
 			+ MaxEncodedLen
 			+ MaybeSerializeDeserialize;
-		type MyStorage: StorageInterface<Value = Self::Value>; 
+		type MyStorage: StorageInterface<Value = Self::Value>;
 	}
 
 	// 5. Runtime Events
@@ -46,10 +46,7 @@ pub mod pallet {
 	#[pallet::call]
 	impl<T: Config> Pallet<T> {
 		#[pallet::weight(0)]
-		pub fn storage_value(
-			origin: OriginFor<T>,
-			value: T::Value, 
-		) -> DispatchResultWithPostInfo {
+		pub fn storage_value(origin: OriginFor<T>, value: T::Value) -> DispatchResultWithPostInfo {
 			ensure_signed(origin)?;
 
 			T::MyStorage::set_param(value);

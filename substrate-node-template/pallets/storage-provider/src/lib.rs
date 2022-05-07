@@ -45,9 +45,7 @@ pub mod pallet {
 	#[pallet::call]
 	impl<T: Config> Pallet<T> {
 		#[pallet::weight(0)]
-		pub fn my_function(
-			origin: OriginFor<T>,
-		) -> DispatchResultWithPostInfo {
+		pub fn my_function(origin: OriginFor<T>) -> DispatchResultWithPostInfo {
 			ensure_signed(origin)?;
 			log::info!(target: "storage provider", "my function!");
 			Self::deposit_event(Event::FunctionCall);
