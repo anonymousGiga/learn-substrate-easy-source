@@ -97,6 +97,7 @@ std = [
 	"pallet-storage-provider/std",
 	"pallet-use-other-pallet1/std",
 	"node-primitives/std",
+	"pallet-contracts/std",
 	"pallet-extend-pallet/std",
 
 	"pallet-timestamp/std",
