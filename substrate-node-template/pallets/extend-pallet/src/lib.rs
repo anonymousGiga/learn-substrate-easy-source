@@ -1,21 +1,17 @@
 #![cfg_attr(not(feature = "std"), no_std)]
 
+use codec::{Encode, HasCompact};
 use frame_support::traits::Currency;
-use sp_runtime::traits::StaticLookup;
 use scale_info::TypeInfo;
 use sp_core::crypto::UncheckedFrom;
-use codec::{Encode, HasCompact};
+use sp_runtime::traits::StaticLookup;
 use sp_std::{fmt::Debug, prelude::*};
 
-type BalanceOf<T> = <<T as ContractsConfig>::Currency as Currency<
-	<T as frame_system::Config>::AccountId,
->>::Balance;
+type BalanceOf<T> =
+	<<T as ContractsConfig>::Currency as Currency<<T as frame_system::Config>::AccountId>>::Balance;
 
 pub use pallet::*;
-pub use pallet_contracts::{
-	Config as ContractsConfig, Pallet as ContractsPallet,
-};
-
+pub use pallet_contracts::{Config as ContractsConfig, Pallet as ContractsPallet};
 
 #[frame_support::pallet]
 pub mod pallet {
@@ -28,12 +24,11 @@ pub mod pallet {
 	pub struct Pallet<T>(_);
 
 	#[pallet::config]
-	pub trait Config: ContractsConfig + frame_system::Config {
-	}
+	pub trait Config: ContractsConfig + frame_system::Config {}
 
 	#[pallet::call]
-	impl<T: Config> Pallet<T> 
-		where
+	impl<T: Config> Pallet<T>
+	where
 		T::AccountId: UncheckedFrom<T::Hash>,
 		T::AccountId: AsRef<[u8]>,
 		<BalanceOf<T> as HasCompact>::Type: Clone + Eq + PartialEq + Debug + TypeInfo + Encode,
@@ -49,15 +44,7 @@ pub mod pallet {
 		) -> DispatchResultWithPostInfo {
 			ensure_root(origin.clone())?;
 
-			ContractsPallet::<T>::call(
-				origin,
-				dest,
-				value,
-				gas_limit,
-				storage_deposit_limit,
-				data,
-			)
+			ContractsPallet::<T>::call(origin, dest, value, gas_limit, storage_deposit_limit, data)
 		}
-
 	}
 }
