@@ -7,11 +7,11 @@ use sp_core::crypto::UncheckedFrom;
 use sp_runtime::traits::StaticLookup;
 use sp_std::{fmt::Debug, prelude::*};
 
-type BalanceOf<T> =
-	<<T as ContractsConfig>::Currency as Currency<<T as frame_system::Config>::AccountId>>::Balance;
+type BalanceOf<T> = <<T as pallet_contracts::Config>::Currency as Currency<
+	<T as frame_system::Config>::AccountId,
+>>::Balance;
 
 pub use pallet::*;
-pub use pallet_contracts::{Config as ContractsConfig, Pallet as ContractsPallet};
 
 #[frame_support::pallet]
 pub mod pallet {
@@ -24,7 +24,7 @@ pub mod pallet {
 	pub struct Pallet<T>(_);
 
 	#[pallet::config]
-	pub trait Config: ContractsConfig + frame_system::Config {}
+	pub trait Config: pallet_contracts::Config + frame_system::Config {}
 
 	#[pallet::call]
 	impl<T: Config> Pallet<T>
@@ -44,7 +44,14 @@ pub mod pallet {
 		) -> DispatchResultWithPostInfo {
 			ensure_root(origin.clone())?;
 
-			ContractsPallet::<T>::call(origin, dest, value, gas_limit, storage_deposit_limit, data)
+			pallet_contracts::Pallet::<T>::call(
+				origin,
+				dest,
+				value,
+				gas_limit,
+				storage_deposit_limit,
+				data,
+			)
 		}
 	}
 }
