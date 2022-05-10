@@ -365,6 +365,11 @@ impl pallet_contracts::Config for Runtime {
 
 impl pallet_extend_pallet::Config for Runtime {}
 
+
+impl pallet_debug::Config for Runtime {
+	type Event = Event;
+}
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub enum Runtime where
@@ -397,6 +402,7 @@ construct_runtime!(
 		// Contracts: pallet_contracts::{Pallet, Call, Storage, Event<T>},
 		Contracts: pallet_contracts::{Pallet, Storage, Event<T>},
 		ExtendContracts: pallet_extend_pallet,
+		UseDebug: pallet_debug,
 	}
 );
 

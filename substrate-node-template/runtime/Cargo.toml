@@ -61,11 +61,11 @@ pallet-use-hooks = { version = "4.0.0-dev", default-features = false, path = "..
 pallet-use-rpc = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-rpc" }
 pallet-use-config1 = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-config1" }
 pallet-use-config2 = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-config2" }
-
 pallet-storage-provider = { version = "4.0.0-dev", default-features = false, path = "../pallets/storage-provider" }
 pallet-use-other-pallet1 = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-other-pallet1" }
-
 pallet-extend-pallet = { version = "4.0.0-dev", default-features = false, path = "../pallets/extend-pallet" }
+pallet-debug = { version = "1.0.0", default-features = false, path = "../pallets/debug" }
+
 
 
 [build-dependencies]
@@ -99,6 +99,7 @@ std = [
 	"node-primitives/std",
 	"pallet-contracts/std",
 	"pallet-extend-pallet/std",
+	"pallet-debug/std",
 
 	"pallet-timestamp/std",
 	"pallet-transaction-payment-rpc-runtime-api/std",
