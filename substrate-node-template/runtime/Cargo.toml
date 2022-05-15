@@ -38,6 +38,7 @@ sp-session = { version = "4.0.0-dev", default-features = false, git = "https://g
 sp-std = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.18" }
 sp-transaction-pool = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.18" }
 sp-version = { version = "5.0.0", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.18" }
+log = { version = "0.4.14", default-features = false }
 
 # Used for the node template's RPCs
 frame-system-rpc-runtime-api = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.18" }
@@ -65,6 +66,7 @@ pallet-storage-provider = { version = "4.0.0-dev", default-features = false, pat
 pallet-use-other-pallet1 = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-other-pallet1" }
 pallet-extend-pallet = { version = "4.0.0-dev", default-features = false, path = "../pallets/extend-pallet" }
 pallet-debug = { version = "1.0.0", default-features = false, path = "../pallets/debug" }
+pallet-ocw-sigtx = { version = "1.0.0", default-features = false, path = "../pallets/ocw-sigtx" }
 
 
 
@@ -115,6 +117,7 @@ std = [
 	"sp-std/std",
 	"sp-transaction-pool/std",
 	"sp-version/std",
+	"log/std",
 ]
 runtime-benchmarks = [
 	"frame-benchmarking/runtime-benchmarks",
