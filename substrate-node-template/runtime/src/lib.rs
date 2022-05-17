@@ -13,8 +13,13 @@ use sp_api::impl_runtime_apis;
 use sp_consensus_aura::sr25519::AuthorityId as AuraId;
 use sp_core::{crypto::KeyTypeId, OpaqueMetadata};
 use sp_runtime::{
-	create_runtime_str, generic::{self, Era}, impl_opaque_keys,
-	traits::{SaturatedConversion, AccountIdLookup, BlakeTwo256, Block as BlockT, IdentifyAccount, NumberFor, StaticLookup, Verify},
+	create_runtime_str,
+	generic::{self, Era},
+	impl_opaque_keys,
+	traits::{
+		AccountIdLookup, BlakeTwo256, Block as BlockT, IdentifyAccount, NumberFor,
+		SaturatedConversion, StaticLookup, Verify,
+	},
 	transaction_validity::{TransactionSource, TransactionValidity},
 	ApplyExtrinsicResult, MultiSignature,
 };
@@ -373,20 +378,17 @@ impl pallet_debug::Config for Runtime {
 
 pub struct MyAuthorityId;
 
-impl frame_system::offchain::AppCrypto<<Signature as Verify>::Signer, Signature>
-	for MyAuthorityId 
-{
-	type RuntimeAppPublic = pallet_ocw_sigtx::AuthorityId;
+impl frame_system::offchain::AppCrypto<<Signature as Verify>::Signer, Signature> for MyAuthorityId {
+	type RuntimeAppPublic = pallet_ocw_sigtx::crypto::Public;
 	type GenericSignature = sp_core::sr25519::Signature;
 	type GenericPublic = sp_core::sr25519::Public;
 }
 
 impl pallet_ocw_sigtx::Config for Runtime {
-	type AuthorityId = MyAuthorityId; 
+	type AuthorityId = MyAuthorityId;
 	type Event = Event;
 	type Call = Call;
 }
-
 
 impl<LocalCall> frame_system::offchain::CreateSignedTransaction<LocalCall> for Runtime
 where
@@ -400,8 +402,9 @@ where
 	) -> Option<(Call, <UncheckedExtrinsic as sp_runtime::traits::Extrinsic>::SignaturePayload)> {
 		let tip = 0;
 		// take the biggest period possible.
-		let period =
-			BlockHashCount::get().checked_next_power_of_two().map(|c| c / 2).unwrap_or(2) as u64;
+		let period = 1 << 7;
+		// BlockHashCount::get().checked_next_power_of_two().map(|c| c / 2).unwrap_or(2) as u64;
+
 		let current_block = System::block_number()
 			.saturated_into::<u64>()
 			// The `System::block_number` is initialized with `n+1`,
@@ -430,18 +433,17 @@ where
 	}
 }
 
-
 impl frame_system::offchain::SigningTypes for Runtime {
-  type Public = <Signature as sp_runtime::traits::Verify>::Signer;
-  type Signature = Signature;
+	type Public = <Signature as sp_runtime::traits::Verify>::Signer;
+	type Signature = Signature;
 }
 
 impl<C> frame_system::offchain::SendTransactionTypes<C> for Runtime
 where
-  Call: From<C>,
+	Call: From<C>,
 {
-  type OverarchingCall = Call;
-  type Extrinsic = UncheckedExtrinsic;
+	type OverarchingCall = Call;
+	type Extrinsic = UncheckedExtrinsic;
 }
 
 // Create the runtime by composing the FRAME pallets that were previously configured.
