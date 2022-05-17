@@ -387,7 +387,7 @@ impl frame_system::offchain::AppCrypto<<Signature as Verify>::Signer, Signature>
 impl pallet_ocw_sigtx::Config for Runtime {
 	type AuthorityId = MyAuthorityId;
 	type Event = Event;
-	type Call = Call;
+	// type Call = Call;
 }
 
 impl<LocalCall> frame_system::offchain::CreateSignedTransaction<LocalCall> for Runtime

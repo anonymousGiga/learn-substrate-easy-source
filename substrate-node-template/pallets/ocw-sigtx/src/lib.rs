@@ -30,7 +30,7 @@ pub mod pallet {
 	pub trait Config: frame_system::Config + CreateSignedTransaction<Call<Self>> {
 		type AuthorityId: AppCrypto<Self::Public, Self::Signature>;
 		type Event: From<Event<Self>> + IsType<<Self as frame_system::Config>::Event>;
-		type Call: From<Call<Self>>;
+		// type Call: From<Call<Self>>;
 	}
 
 	#[pallet::storage]
