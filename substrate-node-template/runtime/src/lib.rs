@@ -389,6 +389,10 @@ impl pallet_ocw_sigtx::Config for Runtime {
 	type Event = Event;
 }
 
+impl pallet_ocw_unsigtx::Config for Runtime {
+	type Event = Event;
+}
+
 impl<LocalCall> frame_system::offchain::CreateSignedTransaction<LocalCall> for Runtime
 where
 	Call: From<LocalCall>,
@@ -479,6 +483,7 @@ construct_runtime!(
 		ExtendContracts: pallet_extend_pallet,
 		UseDebug: pallet_debug,
 		OcwSigtx: pallet_ocw_sigtx,
+		OcwUnSigtx: pallet_ocw_unsigtx,
 	}
 );
 

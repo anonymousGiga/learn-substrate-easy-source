@@ -67,6 +67,7 @@ pallet-use-other-pallet1 = { version = "4.0.0-dev", default-features = false, pa
 pallet-extend-pallet = { version = "4.0.0-dev", default-features = false, path = "../pallets/extend-pallet" }
 pallet-debug = { version = "1.0.0", default-features = false, path = "../pallets/debug" }
 pallet-ocw-sigtx = { version = "1.0.0", default-features = false, path = "../pallets/ocw-sigtx" }
+pallet-ocw-unsigtx = { version = "1.0.0", default-features = false, path = "../pallets/ocw-unsigtx" }
 
 
 
@@ -102,6 +103,8 @@ std = [
 	"pallet-contracts/std",
 	"pallet-extend-pallet/std",
 	"pallet-debug/std",
+	"pallet-ocw-sigtx/std",
+	"pallet-ocw-unsigtx/std",
 
 	"pallet-timestamp/std",
 	"pallet-transaction-payment-rpc-runtime-api/std",

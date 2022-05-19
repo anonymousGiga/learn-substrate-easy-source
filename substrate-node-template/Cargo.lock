@@ -3662,6 +3662,7 @@ dependencies = [
  "pallet-extend-pallet",
  "pallet-grandpa",
  "pallet-ocw-sigtx",
+ "pallet-ocw-unsigtx",
  "pallet-randomness-collective-flip",
  "pallet-simple-pallet",
  "pallet-storage-provider",
@@ -4051,6 +4052,21 @@ dependencies = [
 
 [[package]]
 name = "pallet-ocw-sigtx"
+version = "1.0.0"
+dependencies = [
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
+ "log",
+ "parity-scale-codec",
+ "scale-info",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+]
+
+[[package]]
+name = "pallet-ocw-unsigtx"
 version = "1.0.0"
 dependencies = [
  "frame-benchmarking",
