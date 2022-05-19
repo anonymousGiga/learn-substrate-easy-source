@@ -23,7 +23,7 @@ pub mod pallet {
 	#[pallet::event]
 	#[pallet::generate_deposit(pub(super) fn deposit_event)]
 	pub enum Event<T: Config> {
-		SetSomeInfo(u64, u64),
+		UnsignedPutSetSomeInfo(u64, u64),
 	}
 
 	#[pallet::error]
@@ -65,7 +65,7 @@ pub mod pallet {
 			log::info!(target:"ocw", "unsigned +++++++++++++++++++ offchain_worker set storage: {:?}, cnt: {:?}", number, cnt);
 			SomeInfo::<T>::insert(&number, cnt);
 
-			Self::deposit_event(Event::SetSomeInfo(number, cnt));
+			Self::deposit_event(Event::UnsignedPutSetSomeInfo(number, cnt));
 
 			Ok(().into())
 		}
