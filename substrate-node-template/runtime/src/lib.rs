@@ -393,6 +393,11 @@ impl pallet_ocw_unsigtx::Config for Runtime {
 	type Event = Event;
 }
 
+impl pallet_ocw_unsigxtx_payload::Config for Runtime {
+	type Event = Event;
+	type AuthorityId = MyAuthorityId;
+}
+
 impl<LocalCall> frame_system::offchain::CreateSignedTransaction<LocalCall> for Runtime
 where
 	Call: From<LocalCall>,
@@ -484,6 +489,7 @@ construct_runtime!(
 		UseDebug: pallet_debug,
 		OcwSigtx: pallet_ocw_sigtx,
 		OcwUnSigtx: pallet_ocw_unsigtx,
+		OcwUnsigxtxPayload: pallet_ocw_unsigxtx_payload,
 	}
 );
 

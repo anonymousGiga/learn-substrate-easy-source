@@ -69,6 +69,8 @@ pallet-debug = { version = "1.0.0", default-features = false, path = "../pallets
 pallet-ocw-sigtx = { version = "1.0.0", default-features = false, path = "../pallets/ocw-sigtx" }
 pallet-ocw-unsigtx = { version = "1.0.0", default-features = false, path = "../pallets/ocw-unsigtx" }
 
+pallet-ocw-unsigxtx-payload = { version = "1.0.0", default-features = false, path = "../pallets/ocw-unsigxtx-payload" }
+
 
 
 [build-dependencies]
@@ -105,6 +107,7 @@ std = [
 	"pallet-debug/std",
 	"pallet-ocw-sigtx/std",
 	"pallet-ocw-unsigtx/std",
+	"pallet-ocw-unsigxtx-payload/std",
 
 	"pallet-timestamp/std",
 	"pallet-transaction-payment-rpc-runtime-api/std",

@@ -35,15 +35,14 @@ pub mod pallet {
 	}
 
 	// impl<T: Config> Printable for Error<T> {
-    //     fn print(&self) {
-    //         match self {
-    //             Error::NoneValue => "Invalid Value".print(),
-    //             Error::StorageOverflow => "++++++++++++++++++++++++++ Value Exceeded and Overflowed".print(),
-    //             _ => "Invalid Error Case".print(),
-    //         }
-    //     }
-    // }
-
+	//     fn print(&self) {
+	//         match self {
+	//             Error::NoneValue => "Invalid Value".print(),
+	//             Error::StorageOverflow => "++++++++++++++++++++++++++ Value Exceeded and
+	// Overflowed".print(),             _ => "Invalid Error Case".print(),
+	//         }
+	//     }
+	// }
 
 	#[pallet::call]
 	impl<T: Config> Pallet<T> {
@@ -55,10 +54,10 @@ pub mod pallet {
 			print("After storing my_val");
 
 			if_std! {
-                println!("Hello native world!");
-                println!("My value is: {:#?}", something);
-                println!("The caller account is: {:#?}", who);
-            }
+				println!("Hello native world!");
+				println!("My value is: {:#?}", something);
+				println!("The caller account is: {:#?}", who);
+			}
 
 			Self::deposit_event(Event::SomethingStored(something, who));
 			Ok(())
@@ -69,9 +68,9 @@ pub mod pallet {
 			log::info!("|||||||||||||||||||||| cause error");
 			let _who = ensure_signed(origin)?;
 			match <Something<T>>::get() {
-				None => { 
+				None => {
 					// print(Error::<T>::NoneValue);
-					Err(Error::<T>::NoneValue)? 
+					Err(Error::<T>::NoneValue)?
 				},
 				Some(old) => {
 					log::info!("|||||||||||||||||||||| 2 error");
