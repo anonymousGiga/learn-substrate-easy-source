@@ -11,13 +11,6 @@ pub mod crypto {
 
 pub type AuthorityId = crypto::Public;
 
-// #[derive(Encode, Decode, Clone, PartialEq, Eq, RuntimeDebug, scale_info::TypeInfo)]
-// pub struct SomethingPayload<Public, BlockNumber> {
-// 	block_number: BlockNumber,
-// 	something: u64,
-// 	public: Public,
-// }
-
 pub use pallet::*;
 #[frame_support::pallet]
 pub mod pallet {
