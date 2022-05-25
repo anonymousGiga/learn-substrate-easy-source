@@ -3661,6 +3661,7 @@ dependencies = [
  "pallet-ext-example",
  "pallet-extend-pallet",
  "pallet-grandpa",
+ "pallet-migration",
  "pallet-ocw-sigtx",
  "pallet-ocw-unsigtx",
  "pallet-ocw-unsigxtx-payload",
@@ -4048,6 +4049,22 @@ dependencies = [
  "sp-runtime",
  "sp-session",
  "sp-staking",
+ "sp-std",
+]
+
+[[package]]
+name = "pallet-migration"
+version = "1.0.0"
+dependencies = [
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
+ "log",
+ "parity-scale-codec",
+ "scale-info",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
  "sp-std",
 ]
 

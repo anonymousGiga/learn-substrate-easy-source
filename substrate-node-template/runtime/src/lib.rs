@@ -105,7 +105,8 @@ pub const VERSION: RuntimeVersion = RuntimeVersion {
 	//   `spec_version`, and `authoring_version` are the same between Wasm and native.
 	// This value is set to 100 to notify Polkadot-JS App (https://polkadot.js.org/apps) to use
 	//   the compatible custom types.
-	spec_version: 100,
+	// spec_version: 100,
+	spec_version: 101,
 	impl_version: 1,
 	apis: RUNTIME_API_VERSIONS,
 	transaction_version: 1,
@@ -278,103 +279,103 @@ impl pallet_template::Config for Runtime {
 	type Event = Event;
 }
 
-impl pallet_simple_pallet::Config for Runtime {
-	type Event = Event;
-}
+// impl pallet_simple_pallet::Config for Runtime {
+// 	type Event = Event;
+// }
 
-impl pallet_use_storage::Config for Runtime {
-	type Event = Event;
-}
+// impl pallet_use_storage::Config for Runtime {
+// 	type Event = Event;
+// }
 
-impl pallet_use_errors::Config for Runtime {
-	type Event = Event;
-}
+// impl pallet_use_errors::Config for Runtime {
+// 	type Event = Event;
+// }
 
-impl pallet_ext_example::Config for Runtime {
-	type Event = Event;
-}
+// impl pallet_ext_example::Config for Runtime {
+// 	type Event = Event;
+// }
 
-impl pallet_use_hooks::Config for Runtime {
-	type Event = Event;
-}
+// impl pallet_use_hooks::Config for Runtime {
+// 	type Event = Event;
+// }
 
-impl pallet_use_rpc::Config for Runtime {
-	type Event = Event;
-}
+// impl pallet_use_rpc::Config for Runtime {
+// 	type Event = Event;
+// }
 
-impl pallet_use_config1::Config for Runtime {
-	type Event = Event;
-}
+// impl pallet_use_config1::Config for Runtime {
+// 	type Event = Event;
+// }
 
-impl pallet_use_config2::Config for Runtime {
-	type Event = Event;
-	type StudentNumberType = u32;
-	type StudentNameType = u128;
-}
+// impl pallet_use_config2::Config for Runtime {
+// 	type Event = Event;
+// 	type StudentNumberType = u32;
+// 	type StudentNameType = u128;
+// }
 
-impl pallet_storage_provider::Config for Runtime {
-	type Event = Event;
-	type Value = u32;
-}
+// impl pallet_storage_provider::Config for Runtime {
+// 	type Event = Event;
+// 	type Value = u32;
+// }
 
-impl pallet_use_other_pallet1::Config for Runtime {
-	type Event = Event;
-	type Value = u32;
-	type MyStorage = StorageProvider;
-}
+// impl pallet_use_other_pallet1::Config for Runtime {
+// 	type Event = Event;
+// 	type Value = u32;
+// 	type MyStorage = StorageProvider;
+// }
 
-use pallet_contracts::weights::WeightInfo;
-const AVERAGE_ON_INITIALIZE_RATIO: Perbill = Perbill::from_percent(10);
+// use pallet_contracts::weights::WeightInfo;
+// const AVERAGE_ON_INITIALIZE_RATIO: Perbill = Perbill::from_percent(10);
 
-pub mod currency {
-	use node_primitives::Balance;
+// pub mod currency {
+// 	use node_primitives::Balance;
 
-	pub const MILLICENTS: Balance = 1_000_000_000;
-	pub const CENTS: Balance = 1_000 * MILLICENTS; // assume this is worth about a cent.
-	pub const DOLLARS: Balance = 100 * CENTS;
+// 	pub const MILLICENTS: Balance = 1_000_000_000;
+// 	pub const CENTS: Balance = 1_000 * MILLICENTS; // assume this is worth about a cent.
+// 	pub const DOLLARS: Balance = 100 * CENTS;
 
-	pub const fn deposit(items: u32, bytes: u32) -> Balance {
-		items as Balance * 15 * CENTS + (bytes as Balance) * 6 * CENTS
-	}
-}
+// 	pub const fn deposit(items: u32, bytes: u32) -> Balance {
+// 		items as Balance * 15 * CENTS + (bytes as Balance) * 6 * CENTS
+// 	}
+// }
 
-parameter_types! {
-	pub const DepositPerItem: Balance = currency::deposit(1, 0);
-	pub const DepositPerByte: Balance = currency::deposit(0, 1);
-	pub const MaxValueSize: u32 = 16 * 1024;
-	pub DeletionWeightLimit: Weight = AVERAGE_ON_INITIALIZE_RATIO *
-		BlockWeights::get().max_block;
-	pub DeletionQueueDepth: u32 = ((DeletionWeightLimit::get() / (
-			<Runtime as pallet_contracts::Config>::WeightInfo::on_initialize_per_queue_item(1) -
-			<Runtime as pallet_contracts::Config>::WeightInfo::on_initialize_per_queue_item(0)
-		)) / 5) as u32;
-	pub Schedule: pallet_contracts::Schedule<Runtime> = Default::default();
-}
+// parameter_types! {
+// 	pub const DepositPerItem: Balance = currency::deposit(1, 0);
+// 	pub const DepositPerByte: Balance = currency::deposit(0, 1);
+// 	pub const MaxValueSize: u32 = 16 * 1024;
+// 	pub DeletionWeightLimit: Weight = AVERAGE_ON_INITIALIZE_RATIO *
+// 		BlockWeights::get().max_block;
+// 	pub DeletionQueueDepth: u32 = ((DeletionWeightLimit::get() / (
+// 			<Runtime as pallet_contracts::Config>::WeightInfo::on_initialize_per_queue_item(1) -
+// 			<Runtime as pallet_contracts::Config>::WeightInfo::on_initialize_per_queue_item(0)
+// 		)) / 5) as u32;
+// 	pub Schedule: pallet_contracts::Schedule<Runtime> = Default::default();
+// }
 
-impl pallet_contracts::Config for Runtime {
-	type Time = Timestamp;
-	type Randomness = RandomnessCollectiveFlip;
-	type Currency = Balances;
-	type Event = Event;
-	type Call = Call;
-	type CallFilter = Nothing;
-	type DepositPerItem = DepositPerItem;
-	type DepositPerByte = DepositPerByte;
-	type CallStack = [pallet_contracts::Frame<Self>; 31];
-	type WeightPrice = pallet_transaction_payment::Pallet<Self>;
-	type WeightInfo = pallet_contracts::weights::SubstrateWeight<Self>;
-	type ChainExtension = ();
-	type DeletionQueueDepth = DeletionQueueDepth;
-	type DeletionWeightLimit = DeletionWeightLimit;
-	type Schedule = Schedule;
-	type AddressGenerator = pallet_contracts::DefaultAddressGenerator;
-}
+// impl pallet_contracts::Config for Runtime {
+// 	type Time = Timestamp;
+// 	type Randomness = RandomnessCollectiveFlip;
+// 	type Currency = Balances;
+// 	type Event = Event;
+// 	type Call = Call;
+// 	type CallFilter = Nothing;
+// 	type DepositPerItem = DepositPerItem;
+// 	type DepositPerByte = DepositPerByte;
+// 	type CallStack = [pallet_contracts::Frame<Self>; 31];
+// 	type WeightPrice = pallet_transaction_payment::Pallet<Self>;
+// 	type WeightInfo = pallet_contracts::weights::SubstrateWeight<Self>;
+// 	type ChainExtension = ();
+// 	type DeletionQueueDepth = DeletionQueueDepth;
+// 	type DeletionWeightLimit = DeletionWeightLimit;
+// 	type Schedule = Schedule;
+// 	type AddressGenerator = pallet_contracts::DefaultAddressGenerator;
+// }
 
-impl pallet_extend_pallet::Config for Runtime {}
+// impl pallet_extend_pallet::Config for Runtime {}
 
-impl pallet_debug::Config for Runtime {
-	type Event = Event;
-}
+// impl pallet_debug::Config for Runtime {
+// 	type Event = Event;
+// }
 
 pub struct MyAuthorityId;
 
@@ -384,18 +385,22 @@ impl frame_system::offchain::AppCrypto<<Signature as Verify>::Signer, Signature>
 	type GenericPublic = sp_core::sr25519::Public;
 }
 
-impl pallet_ocw_sigtx::Config for Runtime {
-	type AuthorityId = MyAuthorityId;
-	type Event = Event;
-}
+// impl pallet_ocw_sigtx::Config for Runtime {
+// 	type AuthorityId = MyAuthorityId;
+// 	type Event = Event;
+// }
 
-impl pallet_ocw_unsigtx::Config for Runtime {
-	type Event = Event;
-}
+// impl pallet_ocw_unsigtx::Config for Runtime {
+// 	type Event = Event;
+// }
 
-impl pallet_ocw_unsigxtx_payload::Config for Runtime {
+// impl pallet_ocw_unsigxtx_payload::Config for Runtime {
+// 	type Event = Event;
+// 	type AuthorityId = MyAuthorityId;
+// }
+
+impl pallet_migration::Config for Runtime {
 	type Event = Event;
-	type AuthorityId = MyAuthorityId;
 }
 
 impl<LocalCall> frame_system::offchain::CreateSignedTransaction<LocalCall> for Runtime
@@ -471,25 +476,28 @@ construct_runtime!(
 		Sudo: pallet_sudo,
 		// Include the custom logic from the pallet-template in the runtime.
 		TemplateModule: pallet_template,
-		SimplePallet: pallet_simple_pallet,
-		UseStorage: pallet_use_storage,
-		UseErrors: pallet_use_errors,
-		ExtExample: pallet_ext_example,
-		UseHooks: pallet_use_hooks,
-		UseRpc: pallet_use_rpc,
-		UseConfig1: pallet_use_config1,
-		UseConfig2: pallet_use_config2,
-		StorageProvider: pallet_storage_provider,
-		UseOtherPallet1: pallet_use_other_pallet1,
+		// SimplePallet: pallet_simple_pallet,
+		// UseStorage: pallet_use_storage,
+		// UseErrors: pallet_use_errors,
+		// ExtExample: pallet_ext_example,
+		// UseHooks: pallet_use_hooks,
+		// UseRpc: pallet_use_rpc,
+		// UseConfig1: pallet_use_config1,
+		// UseConfig2: pallet_use_config2,
+		// StorageProvider: pallet_storage_provider,
+		// UseOtherPallet1: pallet_use_other_pallet1,
 
-		// 注意下面两行的区别
-		// Contracts: pallet_contracts::{Pallet, Call, Storage, Event<T>},
-		Contracts: pallet_contracts::{Pallet, Storage, Event<T>},
-		ExtendContracts: pallet_extend_pallet,
-		UseDebug: pallet_debug,
-		OcwSigtx: pallet_ocw_sigtx,
-		OcwUnSigtx: pallet_ocw_unsigtx,
-		OcwUnsigxtxPayload: pallet_ocw_unsigxtx_payload,
+		// // 注意下面两行的区别
+		// // Contracts: pallet_contracts::{Pallet, Call, Storage, Event<T>},
+		// Contracts: pallet_contracts::{Pallet, Storage, Event<T>},
+
+		// ExtendContracts: pallet_extend_pallet,
+		// UseDebug: pallet_debug,
+		// OcwSigtx: pallet_ocw_sigtx,
+		// OcwUnSigtx: pallet_ocw_unsigtx,
+		// OcwUnsigxtxPayload: pallet_ocw_unsigxtx_payload,
+
+		Migration: pallet_migration,
 	}
 );
 
@@ -519,6 +527,8 @@ pub type Executive = frame_executive::Executive<
 	frame_system::ChainContext<Runtime>,
 	Runtime,
 	AllPalletsWithSystem,
+	// 用方法二升级时新增下面这行
+	// pallet_migration::migration::v2::MigrateToV2<Runtime>,
 >;
 
 pub type SignedPayload = generic::SignedPayload<Call, SignedExtra>;
