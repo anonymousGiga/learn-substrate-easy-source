@@ -459,7 +459,7 @@ where
 	type Extrinsic = UncheckedExtrinsic;
 }
 
-// impl pallet_offchain_storage::Config for Runtime {}
+impl pallet_offchain_storage::Config for Runtime {}
 
 impl pallet_offchain_storage2::Config for Runtime {}
 
@@ -502,7 +502,7 @@ construct_runtime!(
 		// OcwUnsigxtxPayload: pallet_ocw_unsigxtx_payload,
 
 		Migration: pallet_migration,
-		// OffchainStorage: pallet_offchain_storage,
+		OffchainStorage: pallet_offchain_storage,
 		OffchainStorage2: pallet_offchain_storage2,
 	}
 );
