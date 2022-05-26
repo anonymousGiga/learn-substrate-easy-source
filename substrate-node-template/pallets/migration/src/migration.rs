@@ -11,7 +11,7 @@ use sp_runtime::traits::Saturating;
 	// use super::*;
 
     // pub struct MigrateToV2<T>(sp_std::marker::PhantomData<T>);
-	// impl<T: Config> OnRuntimeUpgrade for Pallet<T> {
+	// impl<T: Config> OnRuntimeUpgrade for MigrateToV2<T> {
 	// 	fn on_runtime_upgrade() -> Weight {
 	// 		let current = Pallet::<T>::current_storage_version();
 	// 		let onchain = Pallet::<T>::on_chain_storage_version();
