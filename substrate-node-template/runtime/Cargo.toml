@@ -68,10 +68,9 @@ pallet-extend-pallet = { version = "4.0.0-dev", default-features = false, path =
 pallet-debug = { version = "1.0.0", default-features = false, path = "../pallets/debug" }
 pallet-ocw-sigtx = { version = "1.0.0", default-features = false, path = "../pallets/ocw-sigtx" }
 pallet-ocw-unsigtx = { version = "1.0.0", default-features = false, path = "../pallets/ocw-unsigtx" }
-
 pallet-ocw-unsigxtx-payload = { version = "1.0.0", default-features = false, path = "../pallets/ocw-unsigxtx-payload" }
-
 pallet-migration = { version = "1.0.0", default-features = false, path = "../pallets/migration" }
+pallet-offchain-storage = { version = "1.0.0", default-features = false, path = "../pallets/offchain-storage" }
 
 
 [build-dependencies]
@@ -110,6 +109,7 @@ std = [
 	"pallet-ocw-unsigtx/std",
 	"pallet-ocw-unsigxtx-payload/std",
 	"pallet-migration/std",
+	"pallet-offchain-storage/std",
 
 	"pallet-timestamp/std",
 	"pallet-transaction-payment-rpc-runtime-api/std",
