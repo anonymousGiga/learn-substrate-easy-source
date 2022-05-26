@@ -3666,6 +3666,7 @@ dependencies = [
  "pallet-ocw-unsigtx",
  "pallet-ocw-unsigxtx-payload",
  "pallet-offchain-storage",
+ "pallet-offchain-storage2",
  "pallet-randomness-collective-flip",
  "pallet-simple-pallet",
  "pallet-storage-provider",
@@ -4116,6 +4117,21 @@ dependencies = [
 
 [[package]]
 name = "pallet-offchain-storage"
+version = "1.0.0"
+dependencies = [
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
+ "log",
+ "parity-scale-codec",
+ "scale-info",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+]
+
+[[package]]
+name = "pallet-offchain-storage2"
 version = "1.0.0"
 dependencies = [
  "frame-benchmarking",
