@@ -2,7 +2,6 @@
 name = "pallet-offchain-index"
 version = "1.0.0"
 authors = ["linghuyichong"]
-# homepage = "https://substrate.io/"
 edition = "2021"
 license = "Unlicense"
 publish = false
