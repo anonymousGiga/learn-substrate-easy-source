@@ -72,6 +72,7 @@ pallet-ocw-unsigxtx-payload = { version = "1.0.0", default-features = false, pat
 pallet-migration = { version = "1.0.0", default-features = false, path = "../pallets/migration" }
 pallet-offchain-storage = { version = "1.0.0", default-features = false, path = "../pallets/offchain-storage" }
 pallet-offchain-storage2 = { version = "1.0.0", default-features = false, path = "../pallets/offchain-storage2" }
+pallet-offchain-index = { version = "1.0.0", default-features = false, path = "../pallets/offchain-index" }
 
 
 [build-dependencies]
@@ -112,6 +113,7 @@ std = [
 	"pallet-migration/std",
 	"pallet-offchain-storage/std",
 	"pallet-offchain-storage2/std",
+	"pallet-offchain-index/std",
 
 	"pallet-timestamp/std",
 	"pallet-transaction-payment-rpc-runtime-api/std",

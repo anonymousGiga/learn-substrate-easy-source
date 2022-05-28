@@ -399,9 +399,9 @@ impl frame_system::offchain::AppCrypto<<Signature as Verify>::Signer, Signature>
 // 	type AuthorityId = MyAuthorityId;
 // }
 
-impl pallet_migration::Config for Runtime {
-	type Event = Event;
-}
+// impl pallet_migration::Config for Runtime {
+// 	type Event = Event;
+// }
 
 impl<LocalCall> frame_system::offchain::CreateSignedTransaction<LocalCall> for Runtime
 where
@@ -459,9 +459,11 @@ where
 	type Extrinsic = UncheckedExtrinsic;
 }
 
-impl pallet_offchain_storage::Config for Runtime {}
+// impl pallet_offchain_storage::Config for Runtime {}
 
-impl pallet_offchain_storage2::Config for Runtime {}
+// impl pallet_offchain_storage2::Config for Runtime {}
+
+impl pallet_offchain_index::Config for Runtime {}
 
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
@@ -501,9 +503,11 @@ construct_runtime!(
 		// OcwUnSigtx: pallet_ocw_unsigtx,
 		// OcwUnsigxtxPayload: pallet_ocw_unsigxtx_payload,
 
-		Migration: pallet_migration,
-		OffchainStorage: pallet_offchain_storage,
-		OffchainStorage2: pallet_offchain_storage2,
+		// Migration: pallet_migration,
+		// OffchainStorage: pallet_offchain_storage,
+		// OffchainStorage2: pallet_offchain_storage2,
+
+		OffchainIndexDemo: pallet_offchain_index,
 	}
 );
 

@@ -1,8 +1,8 @@
 [package]
-name = "pallet-ocw-unsigxtx-payload"
+name = "pallet-offchain-index"
 version = "1.0.0"
 authors = ["linghuyichong"]
-homepage = "https://substrate.io/"
+# homepage = "https://substrate.io/"
 edition = "2021"
 license = "Unlicense"
 publish = false
@@ -21,9 +21,9 @@ frame-benchmarking = { default-features = false, version = "4.0.0-dev", git = "h
 sp-core = { default-features = false, version = "6.0.0", git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.18" }
 sp-runtime = { default-features = false, version = "6.0.0", git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.18" }
 log = { version = "0.4.14", default-features = false }
+sp-io = { default-features = false, version = "6.0.0", git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.18" }
 
 [dev-dependencies]
-sp-io = { default-features = false, version = "6.0.0", git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.18" }
 
 [features]
 default = ["std"]
@@ -36,6 +36,7 @@ std = [
 	"sp-core/std",
 	"sp-runtime/std",
 	"log/std",
+	"sp-io/std",
 ]
 
 runtime-benchmarks = ["frame-benchmarking/runtime-benchmarks"]
