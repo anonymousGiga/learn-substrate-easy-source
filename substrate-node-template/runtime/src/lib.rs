@@ -463,7 +463,8 @@ where
 
 // impl pallet_offchain_storage2::Config for Runtime {}
 
-impl pallet_offchain_index::Config for Runtime {}
+// impl pallet_offchain_index::Config for Runtime {}
+impl pallet_use_http::Config for Runtime {}
 
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
@@ -507,7 +508,8 @@ construct_runtime!(
 		// OffchainStorage: pallet_offchain_storage,
 		// OffchainStorage2: pallet_offchain_storage2,
 
-		OffchainIndexDemo: pallet_offchain_index,
+		// OffchainIndexDemo: pallet_offchain_index,
+		UseHttpInOcwDemo: pallet_use_http,
 	}
 );
 

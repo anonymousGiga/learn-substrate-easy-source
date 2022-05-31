@@ -73,6 +73,7 @@ pallet-migration = { version = "1.0.0", default-features = false, path = "../pal
 pallet-offchain-storage = { version = "1.0.0", default-features = false, path = "../pallets/offchain-storage" }
 pallet-offchain-storage2 = { version = "1.0.0", default-features = false, path = "../pallets/offchain-storage2" }
 pallet-offchain-index = { version = "1.0.0", default-features = false, path = "../pallets/offchain-index" }
+pallet-use-http = { version = "1.0.0", default-features = false, path = "../pallets/use-http" }
 
 
 [build-dependencies]
@@ -114,6 +115,7 @@ std = [
 	"pallet-offchain-storage/std",
 	"pallet-offchain-storage2/std",
 	"pallet-offchain-index/std",
+	"pallet-use-http/std",
 
 	"pallet-timestamp/std",
 	"pallet-transaction-payment-rpc-runtime-api/std",
