@@ -7,7 +7,6 @@ pub mod pallet {
 	use frame_system::pallet_prelude::*;
 	use scale_info::prelude::vec::Vec;
 
-	// use sp_runtime::offchain::storage::StorageValueRef;
 	use lite_json::json::JsonValue;
 	use sp_runtime::offchain::{http, Duration};
 
@@ -28,20 +27,6 @@ pub mod pallet {
 			}
 		}
 	}
-
-	// #[pallet::call]
-	// impl<T: Config> Pallet<T> {
-	// 	#[pallet::weight(0)]
-	// 	pub fn set_local_storage(
-	// 		origin: OriginFor<T>,
-	// 		some_number: u32,
-	// 	) -> DispatchResultWithPostInfo {
-	// 		ensure_signed(origin)?;
-
-	// 		Self::set_local_storage_with_offchain_index(some_number);
-	// 		Ok(().into())
-	// 	}
-	// }
 
 	impl<T: Config> Pallet<T> {
 		fn parse_price(price_str: &str) -> Option<u32> {
