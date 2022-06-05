@@ -3878,7 +3878,6 @@ dependencies = [
  "sp-transaction-pool",
  "sp-version",
  "substrate-wasm-builder",
- "use-rpc-runtime-api",
 ]
 
 [[package]]
