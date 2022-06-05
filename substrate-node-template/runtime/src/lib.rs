@@ -299,9 +299,9 @@ impl pallet_template::Config for Runtime {
 // 	type Event = Event;
 // }
 
-// impl pallet_use_rpc::Config for Runtime {
-// 	type Event = Event;
-// }
+impl pallet_use_rpc::Config for Runtime {
+	type Event = Event;
+}
 
 // impl pallet_use_config1::Config for Runtime {
 // 	type Event = Event;
@@ -385,10 +385,10 @@ impl frame_system::offchain::AppCrypto<<Signature as Verify>::Signer, Signature>
 	type GenericPublic = sp_core::sr25519::Public;
 }
 
-// impl pallet_ocw_sigtx::Config for Runtime {
-// 	type AuthorityId = MyAuthorityId;
-// 	type Event = Event;
-// }
+impl pallet_ocw_sigtx::Config for Runtime {
+	type AuthorityId = MyAuthorityId;
+	type Event = Event;
+}
 
 // impl pallet_ocw_unsigtx::Config for Runtime {
 // 	type Event = Event;
@@ -488,7 +488,7 @@ construct_runtime!(
 		// UseErrors: pallet_use_errors,
 		// ExtExample: pallet_ext_example,
 		// UseHooks: pallet_use_hooks,
-		// UseRpc: pallet_use_rpc,
+		UseRpc: pallet_use_rpc,
 		// UseConfig1: pallet_use_config1,
 		// UseConfig2: pallet_use_config2,
 		// StorageProvider: pallet_storage_provider,
@@ -500,7 +500,7 @@ construct_runtime!(
 
 		// ExtendContracts: pallet_extend_pallet,
 		// UseDebug: pallet_debug,
-		// OcwSigtx: pallet_ocw_sigtx,
+		OcwSigtx: pallet_ocw_sigtx,
 		// OcwUnSigtx: pallet_ocw_unsigtx,
 		// OcwUnsigxtxPayload: pallet_ocw_unsigxtx_payload,
 
@@ -561,6 +561,12 @@ mod benches {
 }
 
 impl_runtime_apis! {
+	// impl use_rpc_runtime_api::MyRpcRuntimeApi<Block> for Runtime {
+	//     fn rpc_method(v: u32) -> bool {
+	// 		UseRpc::rpc_method(v)
+	// 	}
+	// }
+
 	impl sp_api::Core<Block> for Runtime {
 		fn version() -> RuntimeVersion {
 			VERSION

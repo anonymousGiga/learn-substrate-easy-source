@@ -54,4 +54,10 @@ pub mod pallet {
 			Ok(().into())
 		}
 	}
+
+	impl<T: Config> Pallet<T> {
+	    pub fn rpc_method(_v: u32) -> bool {
+			true
+		}
+	}
 }

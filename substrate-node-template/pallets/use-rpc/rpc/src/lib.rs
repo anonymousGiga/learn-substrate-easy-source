@@ -10,8 +10,9 @@ use sp_api::ProvideRuntimeApi;
 use sp_blockchain::HeaderBackend;
 use sp_core::Bytes;
 use sp_runtime::{generic::BlockId, traits::Block as BlockT};
+use use_rpc_runtime_api::MyRpcRuntimeApi;
+use jsonrpc_client_transports::RpcError;
 
-// An implementation of UseRpc specific RPC methods.
 pub struct UseRpc<C, B> {
 	client: Arc<C>,
 	_marker: std::marker::PhantomData<B>,
@@ -23,19 +24,33 @@ impl<C, B> UseRpc<C, B> {
 	}
 }
 
-/// RPC methods.
 #[rpc]
 pub trait MyRpcApi<BlockHash> {
 	#[rpc(name = "my_rpc_method")]
-	fn rpc_method(&self, v: u32) -> Result<bool>;
+	fn rpc_method(&self, v: u32, at: Option<BlockHash>) -> Result<bool>;
 }
 
 impl<C, Block> MyRpcApi<<Block as BlockT>::Hash> for UseRpc<C, Block>
 where
 	Block: BlockT,
-	C: Send + Sync + 'static + ProvideRuntimeApi<Block> + HeaderBackend<Block>,
+	C: Send + Sync + 'static,
+	C: ProvideRuntimeApi<Block>,
+	C: HeaderBackend<Block>,
+	C::Api: MyRpcRuntimeApi<Block>,
 {
-	fn rpc_method(&self, _v: u32) -> Result<bool> {
-		Ok(true)
+	fn rpc_method(&self, v: u32,
+		at: Option<<Block as BlockT>::Hash>,
+		) -> Result<bool> {
+		let api = self.client.runtime_api();
+        let at = BlockId::hash(at.unwrap_or_else(||
+            self.client.info().best_hash
+        ));
+
+        let runtime_api_result = api.rpc_method(&at, v);
+		runtime_api_result.map_err(|e| RpcError {
+            code: ErrorCode::ServerError(9876), 
+            message: "Something wrong".into(),
+            data: Some(format!("{:?}", e).into()),
+        })
 	}
 }

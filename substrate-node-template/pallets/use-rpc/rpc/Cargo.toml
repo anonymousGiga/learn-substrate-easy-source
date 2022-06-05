@@ -20,7 +20,8 @@ sp-runtime = { default-features = false, version = "6.0.0", git = "https://githu
 sp-api = { default-features = false, version = "4.0.0-dev", git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.18" }
 sp-blockchain = { default-features = false, version = "4.0.0-dev", git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.18" }
 
-# pallet-use-rpc = { version = "4.0.0-dev", path = "../primitives" }
+use-rpc-runtime-api = { version = "1.0.0", default-features = false, path = "./run-api" }
+jsonrpc-client-transports = { version = "18.0.0", features = ["http"] }
 
 [dev-dependencies]
 serde_json = "1.0.74"

@@ -59,7 +59,6 @@ pallet-use-storage = { version = "4.0.0-dev", default-features = false, path = "
 pallet-use-errors = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-errors" }
 pallet-ext-example = { version = "4.0.0-dev", default-features = false, path = "../pallets/ext-example" }
 pallet-use-hooks = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-hooks" }
-pallet-use-rpc = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-rpc" }
 pallet-use-config1 = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-config1" }
 pallet-use-config2 = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-config2" }
 pallet-storage-provider = { version = "4.0.0-dev", default-features = false, path = "../pallets/storage-provider" }
@@ -74,6 +73,9 @@ pallet-offchain-storage = { version = "1.0.0", default-features = false, path = 
 pallet-offchain-storage2 = { version = "1.0.0", default-features = false, path = "../pallets/offchain-storage2" }
 pallet-offchain-index = { version = "1.0.0", default-features = false, path = "../pallets/offchain-index" }
 pallet-use-http = { version = "1.0.0", default-features = false, path = "../pallets/use-http" }
+
+pallet-use-rpc = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-rpc" }
+use-rpc-runtime-api = { version = "1.0.0", default-features = false, path = "../pallets/use-rpc/rpc/run-api" }
 
 
 [build-dependencies]
@@ -116,6 +118,7 @@ std = [
 	"pallet-offchain-storage2/std",
 	"pallet-offchain-index/std",
 	"pallet-use-http/std",
+	"use-rpc-runtime-api/std",
 
 	"pallet-timestamp/std",
 	"pallet-transaction-payment-rpc-runtime-api/std",
