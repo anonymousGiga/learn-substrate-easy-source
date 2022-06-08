@@ -1,0 +1,24 @@
+[package]
+name = "use-rpc-runtime-api"
+version = "4.0.0-dev"
+authors = ["linghuyichong"]
+edition = "2021"
+license = "Apache-2.0"
+description = "RPC runtime API for use-rpc"
+readme = "README.md"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[dependencies]
+codec = { package = "parity-scale-codec", version = "3.0.0", default-features = false, features = ["derive"] }
+sp-api = { default-features = false, version = "4.0.0-dev", git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.18" }
+# sp-runtime = { default-features = false, version = "6.0.0", git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.18" }
+
+[features]
+default = ["std"]
+std = [
+	"codec/std",
+	"sp-api/std",
+	# "sp-runtime/std",
+]

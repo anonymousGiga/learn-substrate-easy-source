@@ -561,11 +561,11 @@ mod benches {
 }
 
 impl_runtime_apis! {
-	// impl use_rpc_runtime_api::MyRpcRuntimeApi<Block> for Runtime {
-	//     fn rpc_method(v: u32) -> bool {
-	// 		UseRpc::rpc_method(v)
-	// 	}
-	// }
+	impl use_rpc_runtime_api::MyRpcRuntimeApi<Block> for Runtime {
+	    fn rpc_method(v: u32) -> bool {
+			UseRpc::rpc_method(v)
+		}
+	}
 
 	impl sp_api::Core<Block> for Runtime {
 		fn version() -> RuntimeVersion {

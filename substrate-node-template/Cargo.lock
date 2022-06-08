@@ -3818,6 +3818,7 @@ dependencies = [
  "sp-timestamp",
  "substrate-build-script-utils",
  "substrate-frame-rpc-system",
+ "use-rpc-runtime-api",
 ]
 
 [[package]]
@@ -3878,6 +3879,7 @@ dependencies = [
  "sp-transaction-pool",
  "sp-version",
  "substrate-wasm-builder",
+ "use-rpc-runtime-api",
 ]
 
 [[package]]
@@ -8491,7 +8493,7 @@ dependencies = [
 
 [[package]]
 name = "use-rpc-runtime-api"
-version = "1.0.0"
+version = "4.0.0-dev"
 dependencies = [
  "parity-scale-codec",
  "sp-api",

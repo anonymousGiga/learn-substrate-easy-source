@@ -20,7 +20,7 @@ sp-runtime = { default-features = false, version = "6.0.0", git = "https://githu
 sp-api = { default-features = false, version = "4.0.0-dev", git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.18" }
 sp-blockchain = { default-features = false, version = "4.0.0-dev", git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.18" }
 
-use-rpc-runtime-api = { version = "1.0.0", default-features = false, path = "./run-api" }
+use-rpc-runtime-api = { version = "4.0.0-dev", default-features = false, path = "./runtime-api" }
 jsonrpc-client-transports = { version = "18.0.0", features = ["http"] }
 
 [dev-dependencies]
