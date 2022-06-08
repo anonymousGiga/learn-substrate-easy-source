@@ -1,17 +1,13 @@
 use std::sync::Arc;
 
 pub use self::gen_client::Client as UseRpcClient;
-use codec::{Codec, Encode};
-use jsonrpc_core::{Error, ErrorCode, Result};
+use jsonrpc_core::{Error as RpcError, ErrorCode, Result};
 use jsonrpc_derive::rpc;
-use serde::{Deserialize, Serialize};
 
 use sp_api::ProvideRuntimeApi;
 use sp_blockchain::HeaderBackend;
-use sp_core::Bytes;
 use sp_runtime::{generic::BlockId, traits::Block as BlockT};
 use use_rpc_runtime_api::MyRpcRuntimeApi;
-use jsonrpc_client_transports::RpcError;
 
 pub struct UseRpc<C, B> {
 	client: Arc<C>,
@@ -41,17 +37,16 @@ where
 	fn rpc_method(&self, v: u32,
 		at: Option<<Block as BlockT>::Hash>,
 		) -> Result<bool> {
-		// let api = self.client.runtime_api();
-        // let at = BlockId::hash(at.unwrap_or_else(||
-        //     self.client.info().best_hash
-        // ));
+		let api = self.client.runtime_api();
+        let at = BlockId::hash(at.unwrap_or_else(||
+            self.client.info().best_hash
+        ));
 
-        // let runtime_api_result = api.rpc_method(&at, v);
-		// runtime_api_result.map_err(|e| RpcError {
-        //     code: ErrorCode::ServerError(9876), 
-        //     message: "Something wrong".into(),
-        //     data: Some(format!("{:?}", e).into()),
-        // })
-		Ok(true)
+        let runtime_api_result = api.rpc_method(&at, v);
+		runtime_api_result.map_err(|e| RpcError{
+            code: ErrorCode::ServerError(9876), 
+            message: "Something wrong".into(),
+            data: Some(format!("{:?}", e).into()),
+        })
 	}
 }
