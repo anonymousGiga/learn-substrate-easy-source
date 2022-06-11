@@ -77,6 +77,7 @@ pallet-use-http = { version = "1.0.0", default-features = false, path = "../pall
 pallet-use-rpc = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-rpc" }
 use-rpc-runtime-api = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-rpc/rpc/runtime-api" }
 
+pallet-use-test = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-test" }
 
 [build-dependencies]
 substrate-wasm-builder = { version = "5.0.0-dev", git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.18" }
@@ -119,6 +120,7 @@ std = [
 	"pallet-offchain-index/std",
 	"pallet-use-http/std",
 	"use-rpc-runtime-api/std",
+	"pallet-use-test/std",
 
 	"pallet-timestamp/std",
 	"pallet-transaction-payment-rpc-runtime-api/std",

@@ -3703,6 +3703,7 @@ dependencies = [
  "pallet-use-other-pallet1",
  "pallet-use-rpc",
  "pallet-use-storage",
+ "pallet-use-test",
  "parity-scale-codec",
  "scale-info",
  "sp-api",
@@ -4457,6 +4458,20 @@ dependencies = [
 
 [[package]]
 name = "pallet-use-storage"
+version = "4.0.0-dev"
+dependencies = [
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
+ "parity-scale-codec",
+ "scale-info",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+]
+
+[[package]]
+name = "pallet-use-test"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",

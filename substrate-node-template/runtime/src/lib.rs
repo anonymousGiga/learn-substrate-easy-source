@@ -377,6 +377,10 @@ impl pallet_use_rpc::Config for Runtime {
 // 	type Event = Event;
 // }
 
+
+impl pallet_use_test::Config for Runtime {
+	type Event = Event;
+}
 pub struct MyAuthorityId;
 
 impl frame_system::offchain::AppCrypto<<Signature as Verify>::Signer, Signature> for MyAuthorityId {
@@ -464,7 +468,7 @@ where
 // impl pallet_offchain_storage2::Config for Runtime {}
 
 // impl pallet_offchain_index::Config for Runtime {}
-impl pallet_use_http::Config for Runtime {}
+// impl pallet_use_http::Config for Runtime {}
 
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
@@ -509,7 +513,8 @@ construct_runtime!(
 		// OffchainStorage2: pallet_offchain_storage2,
 
 		// OffchainIndexDemo: pallet_offchain_index,
-		UseHttpInOcwDemo: pallet_use_http,
+		// UseHttpInOcwDemo: pallet_use_http,
+		UseTest: pallet_use_test,
 	}
 );
 
