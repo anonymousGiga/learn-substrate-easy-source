@@ -1,5 +1,11 @@
 #![cfg_attr(not(feature = "std"), no_std)]
 
+#[cfg(test)]
+mod mock;
+
+#[cfg(test)]
+mod tests;
+
 // 1. Imports and Dependencies
 pub use pallet::*;
 #[frame_support::pallet]

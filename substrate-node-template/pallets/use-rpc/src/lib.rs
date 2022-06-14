@@ -56,7 +56,7 @@ pub mod pallet {
 	}
 
 	impl<T: Config> Pallet<T> {
-	    pub fn rpc_method(v: u32) -> bool {
+		pub fn rpc_method(v: u32) -> bool {
 			if v > 100 {
 				true
 			} else {

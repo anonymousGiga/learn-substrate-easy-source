@@ -377,7 +377,6 @@ impl pallet_use_rpc::Config for Runtime {
 // 	type Event = Event;
 // }
 
-
 impl pallet_use_test::Config for Runtime {
 	type Event = Event;
 }
@@ -567,7 +566,7 @@ mod benches {
 
 impl_runtime_apis! {
 	impl use_rpc_runtime_api::MyRpcRuntimeApi<Block> for Runtime {
-	    fn rpc_method(v: u32) -> bool {
+		fn rpc_method(v: u32) -> bool {
 			UseRpc::rpc_method(v)
 		}
 	}

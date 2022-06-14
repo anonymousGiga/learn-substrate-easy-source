@@ -2,6 +2,6 @@
 
 sp_api::decl_runtime_apis! {
 	pub trait MyRpcRuntimeApi {
-	    fn rpc_method(v: u32) -> bool;
+		fn rpc_method(v: u32) -> bool;
 	}
 }
