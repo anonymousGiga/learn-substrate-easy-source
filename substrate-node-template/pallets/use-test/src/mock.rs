@@ -51,8 +51,15 @@ impl system::Config for Test {
 
 impl pallet_use_test::Config for Test {
 	type Event = Event;
+	type ClassType = u32;
 }
 
+pub use frame_support::pallet_prelude::GenesisBuild;
+
 pub fn new_test_ext() -> sp_io::TestExternalities {
-	system::GenesisConfig::default().build_storage::<Test>().unwrap().into()
+	let mut storage = system::GenesisConfig::default().build_storage::<Test>().unwrap().into();
+	let config: pallet_use_test::GenesisConfig<Test> = pallet_use_test::GenesisConfig { class: 2 };
+	config.assimilate_storage(&mut storage).unwrap();
+
+	storage.into()
 }

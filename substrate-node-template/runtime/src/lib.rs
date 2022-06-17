@@ -379,6 +379,7 @@ impl pallet_use_rpc::Config for Runtime {
 
 impl pallet_use_test::Config for Runtime {
 	type Event = Event;
+	type ClassType = u32;
 }
 pub struct MyAuthorityId;
 
