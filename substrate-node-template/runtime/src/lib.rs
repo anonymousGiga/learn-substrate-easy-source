@@ -381,6 +381,12 @@ impl pallet_use_test::Config for Runtime {
 	type Event = Event;
 	type ClassType = u32;
 }
+
+impl pallet_use_benchmarking::Config for Runtime {
+	type Event = Event;
+	type StudentNumberType = u32;
+	type StudentNameType = u128;
+}
 pub struct MyAuthorityId;
 
 impl frame_system::offchain::AppCrypto<<Signature as Verify>::Signer, Signature> for MyAuthorityId {
@@ -515,6 +521,7 @@ construct_runtime!(
 		// OffchainIndexDemo: pallet_offchain_index,
 		// UseHttpInOcwDemo: pallet_use_http,
 		UseTest: pallet_use_test,
+		UseBenchmarkingDemo: pallet_use_benchmarking,
 	}
 );
 
@@ -562,6 +569,7 @@ mod benches {
 		[pallet_balances, Balances]
 		[pallet_timestamp, Timestamp]
 		[pallet_template, TemplateModule]
+		[pallet_use_benchmarking, UseBenchmarkingDemo]
 	);
 }
 

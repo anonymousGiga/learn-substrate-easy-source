@@ -78,6 +78,7 @@ pallet-use-rpc = { version = "4.0.0-dev", default-features = false, path = "../p
 use-rpc-runtime-api = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-rpc/rpc/runtime-api" }
 
 pallet-use-test = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-test" }
+pallet-use-benchmarking = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-benchmarking" }
 
 [build-dependencies]
 substrate-wasm-builder = { version = "5.0.0-dev", git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.18" }
@@ -121,6 +122,7 @@ std = [
 	"pallet-use-http/std",
 	"use-rpc-runtime-api/std",
 	"pallet-use-test/std",
+	"pallet-use-benchmarking/std",
 
 	"pallet-timestamp/std",
 	"pallet-transaction-payment-rpc-runtime-api/std",
@@ -146,6 +148,7 @@ runtime-benchmarks = [
 	"hex-literal",
 	"pallet-balances/runtime-benchmarks",
 	"pallet-template/runtime-benchmarks",
+	"pallet-use-benchmarking/runtime-benchmarks",
 	"pallet-timestamp/runtime-benchmarks",
 	"sp-runtime/runtime-benchmarks",
 ]
