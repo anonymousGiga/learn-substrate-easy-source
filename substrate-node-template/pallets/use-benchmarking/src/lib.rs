@@ -3,11 +3,14 @@
 #[cfg(test)]
 mod mock;
 
-#[cfg(test)]
-mod tests;
+// #[cfg(test)]
+// mod tests;
 
 #[cfg(feature = "runtime-benchmarks")]
 mod benchmarking;
+
+pub mod weights;
+pub use weights::WeightInfo;
 
 pub use pallet::*;
 #[frame_support::pallet]
@@ -19,6 +22,7 @@ pub mod pallet {
 	use frame_system::pallet_prelude::*;
 	use scale_info::prelude::vec::Vec;
 
+	use crate::WeightInfo;
 	use sp_io::hashing::{blake2_128, twox_128};
 
 	#[pallet::pallet]
@@ -35,6 +39,8 @@ pub mod pallet {
 			+ Parameter
 			+ AtLeast32BitUnsigned
 			+ Codec
+			+ From<u32>
+			+ Into<u32>
 			+ Copy
 			+ Debug
 			+ Default
@@ -53,6 +59,8 @@ pub mod pallet {
 			+ MaxEncodedLen
 			+ MaybeSerializeDeserialize
 			+ Debug;
+
+		type WeightInfo: WeightInfo;
 	}
 
 	// 4. Runtime Storage
@@ -81,7 +89,7 @@ pub mod pallet {
 	// Functions that are callable from outside the runtime.
 	#[pallet::call]
 	impl<T: Config> Pallet<T> {
-		#[pallet::weight(100)]
+		#[pallet::weight(<T as Config>::WeightInfo::set_student_info((*student_number).into() ))]
 		pub fn set_student_info(
 			origin: OriginFor<T>,
 			student_number: T::StudentNumberType,
@@ -111,6 +119,11 @@ pub mod pallet {
 				b"0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
 			);
 			log::info!(target: "use-benchmarking", "------------ ============================, key1 = {:?}, key2 = {:?}, key3 = {:?}", key1, key2, key3);
+
+			let a = "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY".as_bytes().to_vec();
+			a.using_encoded(|ref slice| {
+				log::info!(target: "use-benchmarking", "------------ ============================, code = {:?}", slice);
+			});
 		}
 
 		fn blake2_128_concat(d: &[u8]) -> Vec<u8> {

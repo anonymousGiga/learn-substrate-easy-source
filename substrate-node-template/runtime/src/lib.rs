@@ -386,6 +386,7 @@ impl pallet_use_benchmarking::Config for Runtime {
 	type Event = Event;
 	type StudentNumberType = u32;
 	type StudentNameType = u128;
+	type WeightInfo = pallet_use_benchmarking::weights::SubstrateWeight<Runtime>;
 }
 pub struct MyAuthorityId;
 
