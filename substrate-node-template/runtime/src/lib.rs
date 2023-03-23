@@ -283,9 +283,9 @@ impl pallet_template::Config for Runtime {
 // 	type Event = Event;
 // }
 
-// impl pallet_use_storage::Config for Runtime {
-// 	type Event = Event;
-// }
+impl pallet_use_storage::Config for Runtime {
+	type Event = Event;
+}
 
 // impl pallet_use_errors::Config for Runtime {
 // 	type Event = Event;
@@ -401,9 +401,9 @@ impl pallet_ocw_sigtx::Config for Runtime {
 	type Event = Event;
 }
 
-// impl pallet_ocw_unsigtx::Config for Runtime {
-// 	type Event = Event;
-// }
+impl pallet_ocw_unsigtx::Config for Runtime {
+	type Event = Event;
+}
 
 // impl pallet_ocw_unsigxtx_payload::Config for Runtime {
 // 	type Event = Event;
@@ -475,7 +475,7 @@ where
 // impl pallet_offchain_storage2::Config for Runtime {}
 
 // impl pallet_offchain_index::Config for Runtime {}
-// impl pallet_use_http::Config for Runtime {}
+impl pallet_use_http::Config for Runtime {}
 
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
@@ -495,7 +495,7 @@ construct_runtime!(
 		// Include the custom logic from the pallet-template in the runtime.
 		TemplateModule: pallet_template,
 		// SimplePallet: pallet_simple_pallet,
-		// UseStorage: pallet_use_storage,
+		UseStorage: pallet_use_storage,
 		// UseErrors: pallet_use_errors,
 		// ExtExample: pallet_ext_example,
 		// UseHooks: pallet_use_hooks,
@@ -512,7 +512,7 @@ construct_runtime!(
 		// ExtendContracts: pallet_extend_pallet,
 		// UseDebug: pallet_debug,
 		OcwSigtx: pallet_ocw_sigtx,
-		// OcwUnSigtx: pallet_ocw_unsigtx,
+		OcwUnSigtx: pallet_ocw_unsigtx,
 		// OcwUnsigxtxPayload: pallet_ocw_unsigxtx_payload,
 
 		// Migration: pallet_migration,
@@ -520,7 +520,7 @@ construct_runtime!(
 		// OffchainStorage2: pallet_offchain_storage2,
 
 		// OffchainIndexDemo: pallet_offchain_index,
-		// UseHttpInOcwDemo: pallet_use_http,
+		UseHttpInOcwDemo: pallet_use_http,
 		UseTest: pallet_use_test,
 		UseBenchmarkingDemo: pallet_use_benchmarking,
 	}

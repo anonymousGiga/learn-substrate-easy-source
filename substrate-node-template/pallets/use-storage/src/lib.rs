@@ -31,7 +31,8 @@ pub mod pallet {
 	// use storageMap store (student number -> student name).
 	#[pallet::storage]
 	#[pallet::getter(fn students_info)]
-	pub type StudentsInfo<T: Config> = StorageMap<_, Blake2_128Concat, u32, u128, ValueQuery>;
+	pub type StudentsInfo<T: Config> =
+		StorageMap<_, Blake2_128Concat, u32, u128, ValueQuery, GetDefault, ConstU32<2>>;
 
 	#[pallet::storage]
 	#[pallet::getter(fn dorm_info)]
